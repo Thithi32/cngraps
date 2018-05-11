@@ -45,11 +45,11 @@ GRANT ALL PRIVILEGES ON DATABASE mydatabase TO myuser;
 
 ### Development
 
-`npm start`
+`npm run dev`
 
 ### Production
 
-`npm run start-prod`
+`npm start`
 
 ## Test
 

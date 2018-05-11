@@ -1,4 +1,12 @@
-# GraphQL complete server
+# Complete GraphQL server and create-react-app client
+
+This project contains
+
+- a Node.js graphQL server using Express, Apollo server, Sequelize, PostgreSQL, SendGrid and Slack
+- create-react-app client using Ant Design for its UI, Apollo Client and less.
+
+The server is already configured with SubscriptionServer middleware even if there's no subscriptions defined in schema and resolvers.
+
 
 ## Installation
 
@@ -14,11 +22,11 @@
 
 *Edit .env*
 
-*TODO DESCRIBE .env*
+**TODO DESCRIBE .env**
 
-*TODO HOW TO GET SENDGRID API*
+**TODO HOW TO GET SENDGRID API**
 
-*TODO HOW TO SET SLACK*
+**TODO HOW TO SET SLACK**
 
 #### Database
 
@@ -53,15 +61,32 @@ GRANT ALL PRIVILEGES ON DATABASE mydatabase TO myuser;
 {
   allUsers {
     id,
-    username
+    name,
+    email
   }
 }
 ```
 
 ```
 mutation {
-  createUser(username:"Jean") {
+  register(
+    name: "Admin",
+    email: "admin@my.site",
+    password: "admin"
+  ) {
     id
+  }
+}
+```
+
+```
+mutation {
+  login(
+    email: "admin@my.site",
+    password: "admin"
+  ) {
+    token,
+    refreshToken
   }
 }
 ```

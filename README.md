@@ -49,7 +49,10 @@ GRANT ALL PRIVILEGES ON DATABASE mydatabase TO myuser;
 
 ### Production
 
-`npm run prod`
+```
+npm run build
+npm run prod
+```
 
 ### Deploy Heroku
 
@@ -63,6 +66,7 @@ git push heroku <currentbranch>:master
 
 Cf. Environnment file description above
 
+Heroku deploy uses postinstall npm script to build the application and start npm script to start the server.
 
 ## Test
 

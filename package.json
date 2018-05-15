@@ -17,7 +17,7 @@
     "client-install": "cd client && npm install",
     "build": "concurrently --kill-others-on-fail \"npm run server-build\" \"npm run client-build\"",
     "postinstall": "node_modules/sequelize-cli/lib/sequelize db:migrate && npm run client-install && npm run build",
-    "start": "node dist/index.js",
+    "start": "node dist/index.js"
   },
   "cacheDirectories": ["client/node_modules", "node_modules"],
   "keywords": [

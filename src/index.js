@@ -1,6 +1,7 @@
 import regeneratorRuntime from 'regenerator-runtime'; // eslint-disable-line
 import express from 'express';
 import bodyParser from 'body-parser';
+import path from 'path';
 import { graphiqlExpress, graphqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import cors from 'cors';
@@ -89,6 +90,10 @@ app.use(
     },
   })),
 );
+
+// Serve React app build
+const client = path.join(__dirname, 'client/build');
+app.use(express.static(client));
 
 // Wrap the Express server
 const ws = createServer(app);

@@ -49,7 +49,20 @@ GRANT ALL PRIVILEGES ON DATABASE mydatabase TO myuser;
 
 ### Production
 
-`npm start`
+`npm run prod`
+
+### Deploy Heroku
+
+```
+heroku create
+heroku addons:create heroku-postgresql:hobby-dev
+heroku config:set NODE_ENV=production
+heroku config:set SECRET=thisismysecret
+git push heroku <currentbranch>:master
+```
+
+Cf. Environnment file description above
+
 
 ## Test
 
@@ -74,7 +87,8 @@ mutation {
     email: "admin@my.site",
     password: "admin"
   ) {
-    id
+    token,
+    refreshToken
   }
 }
 ```
@@ -90,6 +104,11 @@ mutation {
   }
 }
 ```
+
+## Contribution
+
+All contribution are very welcome especially for improving repository documentation and tests. For example, we could add a deploy in Heroku button.
+Please use issues for bug report and feature requests.
 
 ## Tutorials & References
 

@@ -8,15 +8,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "sh -ac ' . ./.env; node_modules/sequelize-cli/lib/sequelize db:migrate'",
     "migrate:undo": "sh -ac ' . ./.env; node_modules/sequelize-cli/lib/sequelize db:migrate:undo'",
-    "postinstall": "npm run build && npm run migrate",
-    "build": "babel src -d dist --copy-files",
     "server-dev": "nodemon --exec \"node --require 'dotenv/config' --require 'babel-register' src/index.js\"",
-    "server-prod": "npm run build && sh -ac ' . ./.env; node dist/index.js'",
     "client-dev": "cd client && npm start",
-    "client-prod": "cd client && npm run build && node build/index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run client-dev\"",
-    "start": "concurrently --kill-others-on-fail \"npm run server-prod\" \"npm run client-prod\""
+    "start": "sh -ac ' . ./.env; node dist/index.js'",
+    "server-build": "babel src -d dist --copy-files",
+    "client-build": "cd client && npm run build && mkdir -p ../dist/client && cp -r build ../dist/client/",
+    "client-install": "cd client && npm install",
+    "build": "concurrently --kill-others-on-fail \"npm run server-build\" \"npm run client-build\"",
+    "postinstall": "node_modules/sequelize-cli/lib/sequelize db:migrate && npm run client-install && npm run build"
   },
+  "cacheDirectories": ["client/node_modules", "node_modules"],
   "keywords": [
     "graphql",
     "express",

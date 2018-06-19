@@ -116,6 +116,7 @@ Please use issues for bug report and feature requests.
 
 ## Tutorials & References
 
+https://www.youtube.com/user/99baddawg
 https://www.youtube.com/watch?v=DNPVqK_woRQ
 
 
